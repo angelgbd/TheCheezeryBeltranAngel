@@ -3,8 +3,8 @@ package beltran.angel.thecheezery.viewModel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import beltran.angel.thecheezery.data.DatabaseHelper
-import beltran.angel.thecheezery.data.ProductsDAO
+import beltran.angel.thecheezery.data.database.AppDatabase
+import beltran.angel.thecheezery.data.repository.CheezeryRepository
 
 class ProductViewModelFactory(
     private val context: Context,
@@ -13,9 +13,9 @@ class ProductViewModelFactory(
     @Suppress("UNCHECKED_CAST")
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(ProductViewModel::class.java)) {
-            val dbHelper = DatabaseHelper(context.applicationContext)
-            val dao = ProductsDAO(dbHelper)
-            return ProductViewModel(dao, context.applicationContext) as T
+            val database = AppDatabase.getInstance(context.applicationContext)
+            val repository = CheezeryRepository(database)
+            return ProductViewModel(repository, context.applicationContext) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
