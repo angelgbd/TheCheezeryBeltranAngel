@@ -16,6 +16,7 @@ object CheezeryContract {
         const val COLUMN_PRICE = "priceProduct"
         const val COLUMN_IMAGE = "imageProduct"
         const val COLUMN_DESCRIPTION = "descriptionProduct"
+        const val COLUMN_TYPE = "typeProduct"
 
     }
 

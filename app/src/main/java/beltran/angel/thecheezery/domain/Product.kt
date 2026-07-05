@@ -1,10 +1,10 @@
 package beltran.angel.thecheezery.domain
 
-data class Product (
+data class Product(
     val id: Int = 0,
     val name: String,
     val price: Float,
-    val image: String? = null, //URL o nombre del recurso
-    val description: String? = null
-
+    val type: ProductType,
+    val image: String? = null,
+    val description: String? = null,
 )
